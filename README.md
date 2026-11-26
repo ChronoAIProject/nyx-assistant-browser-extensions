@@ -1,14 +1,19 @@
-# Chrono Harness 仓库起点
+# Nyx 助手 · Chrome 扩展
 
-点击 GitHub 的 **Use this template → Create a new repository**，创建并克隆你的仓库。安装 mise 后，在仓库根目录执行以下命令。
+在任意普通网页点击工具栏的 Nyx 图标，即可在侧边栏提问。侧边栏在同一窗口的标签页之间保持打开，可以边浏览边继续对话。
 
-```sh
-mise trust
-mise run harness-setup
-```
+## 安装与使用
 
-模板默认在每次安装时为所选组织工具查找最新公开测试版，并校验当前平台的 SHA-256。所有分支和直接检出的提交使用同一默认通道。可用 Copier 为各工具分别保存正式版、测试版或精确标签，也可在单次安装时覆盖这些选择。[混合选版与单次覆盖示例](.chrono-harness/USAGE.md#保存各工具的版本选择) · [默认工具发行进度](https://github.com/chrono-harness/chrono-harness-main/issues/15)
+1. 使用桌面版 Chrome 116 或更新版本，下载并解压本仓库，或克隆到本机。
+2. 打开 `chrome://extensions/`，启用「开发者模式」，点击「加载已解压的扩展程序」，选择包含 `manifest.json` 的 **extension** 文件夹。该目录可直接加载。
+3. 在任一网页打开 Chrome 的「扩展程序」菜单，点击「Nyx 助手」。可以点击图钉，将入口固定到工具栏。
+4. 在侧边栏点击「连接 NyxID」，前往授权页核对授权码，批准可访问 `llm-nyx` 和 `chrono-llm-public` 的 Key。回到侧边栏，输入问题并按 Enter 发送，Shift+Enter 换行。
+5. 在同一窗口打开另一个网站，可继续刚才的对话。讨论网页内容时，请将需要的段落粘贴到消息中。
 
-首次安装会从 origin 识别 GitHub 仓库与默认分支。运行 `mise current` 查看实际采用的版本。AI 打开根目录的 AGENTS.md 或 CLAUDE.md 即可阅读默认工作规则。
+扩展只申请侧边栏和 NyxID API 站点权限。浏览页面的正文、地址和选区由用户自行决定是否粘贴发送。聊天记录随本次侧边栏关闭而结束。已核验的授权加密保存在扩展来源，重新打开可以继续使用同一授权。点击「断开授权」可撤销当前子凭据。
 
-默认安装全部组件。工具选装、增补本仓指令和 Issue 路线图见[使用说明](.chrono-harness/USAGE.md)。已有项目使用 [Copier 配方](https://github.com/chrono-harness/chrono-harness-copier)。组件清单和开发入口见 [Chrono Harness](https://github.com/chrono-harness/chrono-harness-main)。
+## 维护与验收
+
+`extension/vendor/nyx-widget.js` 是随扩展分发的 SDK 浏览器构建，含上游打包的依赖许可。更新时从固定版本复制该文件，然后验证授权、消息和侧边栏启动。当前版本为 `v0.1.0-alpha.11`。[SDK 源文件](https://github.com/ChronoAIProject/nyx-assistant-sdk/blob/6da8ee2c65c37cccd68329c741862bfc186508e1/browser/nyx-widget.js)
+
+在独立 Chrome 配置中按安装步骤加载扩展。在两个不同来源的普通网页打开侧边栏，确认能连接 NyxID，在第一个标签发送消息，切到第二个标签继续对话。保持侧边栏打开并刷新网页，再检查消息是否仍在。扩展的文件、依赖和验收入口见[登记表](.chrono-harness/FILEMAP.md)。仓库协作工具沿用[安装说明](.chrono-harness/USAGE.md)。

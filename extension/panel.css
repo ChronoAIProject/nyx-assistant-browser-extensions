@@ -1,0 +1,55 @@
+:root {
+  color-scheme: light dark;
+  font: 15px/1.55 "Inter", system-ui, sans-serif;
+  --paper: #fbfcf8;
+  --ink: #1c332b;
+  --accent: #215c48;
+  --muted: #54685e;
+  --line: #c9d6cc;
+  --wash: #eaf2e9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17231e;
+    --ink: #e5eee5;
+    --accent: #a7d8b5;
+    --muted: #aec0b3;
+    --line: #455b4d;
+    --wash: #293a30;
+  }
+}
+body { margin: 0; font: inherit; background: var(--paper); color: var(--ink); }
+nyx-assistant {
+  position: fixed;
+  inset: 0;
+  --nyx-surface: var(--paper);
+  --nyx-text: var(--ink);
+  --nyx-muted: var(--muted);
+  --nyx-border: var(--line);
+  --nyx-accent: var(--accent);
+  --nyx-accent-text: var(--paper);
+  --nyx-control-surface: var(--wash);
+}
+nyx-assistant::part(panel) {
+  width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+nyx-assistant::part(header) {
+  padding: 14px 12px;
+  gap: 8px;
+}
+nyx-assistant::part(header)::before {
+  content: "";
+  width: 26px;
+  height: 26px;
+  background: url("icons/nyx-32.png") center / contain no-repeat;
+}
+nyx-assistant::part(primary-action) { min-height: 36px; padding-inline: 14px; }
+nyx-assistant::part(launcher) { margin: 16px; }
+
+nyx-assistant::part(chat) { flex: 1 1 auto; padding-inline: 16px; }
+nyx-assistant::part(controls) { padding: 16px; }

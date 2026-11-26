@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Nyx 助手",
+  "version": "0.1.0",
+  "description": "在 Chrome 侧边栏与 Nyx 对话。切换网页时可以继续当前对话。",
+  "minimum_chrome_version": "116",
+  "permissions": ["sidePanel"],
+  "host_permissions": ["https://nyx-api.chrono-ai.fun/*"],
+  "action": {
+    "default_title": "打开 Nyx 助手",
+    "default_icon": {
+      "16": "icons/nyx-16.png",
+      "32": "icons/nyx-32.png"
+    }
+  },
+  "icons": {
+    "16": "icons/nyx-16.png",
+    "32": "icons/nyx-32.png",
+    "48": "icons/nyx-48.png",
+    "128": "icons/nyx-128.png"
+  },
+  "background": { "service_worker": "background.js" },
+  "side_panel": { "default_path": "panel.html" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src https://nyx-api.chrono-ai.fun; base-uri 'none'"
+  }
+}
