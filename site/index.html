@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nyx 浏览器助手 · 开发者官网</title>
+  <meta name="description" content="在 Chrome 侧边栏与 Nyx 对话，切换标签页也能继续。下载扩展，了解安装、NyxID 授权与 SDK 接入方式。">
+  <meta name="theme-color" content="#f8f8f1">
+  <link rel="canonical" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/">
+  <link rel="alternate" hreflang="zh-CN" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/">
+  <link rel="alternate" hreflang="en" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/en/">
+  <link rel="alternate" hreflang="x-default" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/">
+  <link rel="icon" href="./nyx.png" type="image/png">
+  <link rel="stylesheet" href="./site.css">
+  <script src="./site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="./" aria-label="Nyx 浏览器助手 · 开发者官网"><img src="./nyx.png" alt="" width="32" height="32"><strong>Nyx</strong><span>开发者</span></a>
+      <nav aria-label="主导航">
+        <a href="#install">安装指南</a><a href="#develop">开发文档</a>
+        <a class="lang" href="./en/" lang="en" hreflang="en"><span class="globe" aria-hidden="true"></span>English</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="product">
+      <div class="intro">
+        <p class="platform"><i aria-hidden="true"></i>Chrome 侧边栏扩展</p>
+        <h1 id="product">Nyx <em>for<br>Chrome.</em></h1>
+        <p class="lead">在网页旁打开 Nyx 助手。切换标签页、刷新页面，都能在同一窗口继续对话。</p>
+        <div class="actions">
+          <a class="btn primary" href="./nyx-chrome-extension.zip" download><span aria-hidden="true">↓</span>下载 Chrome 扩展</a>
+          <a class="source" href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="compat">桌面版 Chrome 116+ <span>·</span> Manifest V3</p>
+      </div>
+      <figure class="preview">
+        <div class="browser">
+          <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>NASA / Apollo 8</span></div>
+          <div class="browser-body">
+            <div class="photo" role="img" aria-label="从月球上空拍摄的地出，阿波罗 8 号"><div><small>APOLLO 8</small><b>Earthrise</b></div></div>
+            <div class="sample">
+              <div class="sample-title"><img src="./nyx.png" width="19" height="19" alt="">Nyx</div>
+              <div class="sample-log"><p class="question">“Earthrise” 是什么意思？</p>
+                <strong>Nyx</strong><p>从月球上看，地球升起在地平线之上。这一景象被称为「地出」。</p></div>
+              <div class="sample-input">给 Nyx 发消息…<span aria-hidden="true">↑</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption><span>侧边栏对话示意</span><a href="https://images.nasa.gov/details/as08-14-2383">影像 NASA ↗</a></figcaption>
+      </figure>
+    </section>
+    <section class="install" id="install" aria-labelledby="install-title">
+      <div class="wrap section-grid">
+        <div class="section-head"><h2 id="install-title">安装与使用</h2><p>准备桌面版 Chrome 和一个 NyxID 账号。</p></div>
+        <ol class="steps">
+          <li><div><h3>下载并解压</h3><p>解压<a href="./nyx-chrome-extension.zip" download>nyx-chrome-extension.zip</a>，找到含 manifest.json 的文件夹。</p></div></li>
+          <li><div><h3>在 Chrome 中加载扩展</h3><p>在地址栏打开下方地址，启用「开发者模式」，点击「加载已解压的扩展程序」并选择刚才的文件夹。</p><div class="snippet"><code id="extensions-url">chrome://extensions/</code><button type="button" class="copy" data-copy="extensions-url" data-done="已复制" data-error="请选择并复制文字" hidden>复制</button></div></div></li>
+          <li><div><h3>连接 NyxID，开始对话</h3><p>点击工具栏的 Nyx 图标，选择「连接 NyxID」，在授权页核对验证码并批准服务。回到侧边栏即可提问。</p></div></li>
+        </ol>
+      </div>
+    </section>
+    <section class="wrap section-grid dev" id="develop" aria-labelledby="dev-title">
+      <div class="section-head"><h2 id="dev-title">开发者资源</h2><p>扩展使用 Manifest V3，聊天与授权由 Nyx Assistant SDK 提供。</p></div>
+      <div class="resources">
+        <h3>从源码运行</h3>
+        <p>克隆仓库，然后在 Chrome 中加载 extension/ 目录。源码可直接运行。</p>
+        <div class="terminal"><div class="terminal-bar"><span>Terminal</span><button type="button" class="copy" data-copy="clone" data-done="已复制" data-error="请选择并复制文字" hidden>复制</button></div><code id="clone">git clone https://github.com/ChronoAIProject/nyx-assistant-browser-extensions.git</code></div>
+        <div class="doclinks">
+          <a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/tree/dev/extension"><strong>扩展源码</strong><small>manifest.json · panel.js</small><b aria-hidden="true">↗</b></a>
+          <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK 接入文档</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
+        </div>
+        <details><summary>扩展会读取哪些网页数据？</summary><p>扩展申请侧边栏和 NyxID API 站点权限。若要讨论正在浏览的内容，请把选定文字粘贴到对话中。</p></details>
+        <details><summary>授权和会话如何保存？</summary><p>NyxID 授权使用 llm-nyx 和 chrono-llm-public 服务。子凭据在扩展来源加密保存，可在侧边栏点击「断开授权」撤销。关闭侧边栏会结束本次对话。</p></details>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap bottom"><span><img src="./nyx.png" width="20" height="20" alt="">ChronoAIProject / Nyx</span><a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/issues">问题反馈 ↗</a></div></footer>
+</body>
+</html>

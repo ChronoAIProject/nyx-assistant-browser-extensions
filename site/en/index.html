@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nyx for Chrome · Developer site</title>
+  <meta name="description" content="Chat with Nyx in the Chrome side panel as you switch tabs. Download the extension and explore installation, NyxID access, and the SDK.">
+  <meta name="theme-color" content="#f8f8f1">
+  <link rel="canonical" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/en/">
+  <link rel="alternate" hreflang="zh-CN" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/">
+  <link rel="alternate" hreflang="en" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/en/">
+  <link rel="alternate" hreflang="x-default" href="https://chronoaiproject.github.io/nyx-assistant-browser-extensions/">
+  <link rel="icon" href="../nyx.png" type="image/png">
+  <link rel="stylesheet" href="../site.css">
+  <script src="../site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="./" aria-label="Nyx for Chrome · Developer site"><img src="../nyx.png" alt="" width="32" height="32"><strong>Nyx</strong><span>Developers</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#install">Installation</a><a href="#develop">Develop</a>
+        <a class="lang" href="../" lang="zh-CN" hreflang="zh-CN"><span class="globe" aria-hidden="true"></span>中文</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="product">
+      <div class="intro">
+        <p class="platform"><i aria-hidden="true"></i>Chrome side panel extension</p>
+        <h1 id="product">Nyx <em>for<br>Chrome.</em></h1>
+        <p class="lead">Open Nyx alongside the page you’re reading. Keep the conversation going as you switch tabs or reload a page in the same window.</p>
+        <div class="actions">
+          <a class="btn primary" href="../nyx-chrome-extension.zip" download><span aria-hidden="true">↓</span>Download extension</a>
+          <a class="source" href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="compat">Desktop Chrome 116+ <span>·</span> Manifest V3</p>
+      </div>
+      <figure class="preview">
+        <div class="browser">
+          <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>NASA / Apollo 8</span></div>
+          <div class="browser-body">
+            <div class="photo" role="img" aria-label="Earthrise seen from lunar orbit during Apollo 8"><div><small>APOLLO 8</small><b>Earthrise</b></div></div>
+            <div class="sample">
+              <div class="sample-title"><img src="../nyx.png" width="19" height="19" alt="">Nyx</div>
+              <div class="sample-log"><p class="question">What does “Earthrise” mean?</p>
+                <strong>Nyx</strong><p>Seen from the Moon, Earth appears to rise above the lunar horizon. That view is called Earthrise.</p></div>
+              <div class="sample-input">Message Nyx…<span aria-hidden="true">↑</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption><span>Illustrative side panel conversation</span><a href="https://images.nasa.gov/details/as08-14-2383">Image NASA ↗</a></figcaption>
+      </figure>
+    </section>
+    <section class="install" id="install" aria-labelledby="install-title">
+      <div class="wrap section-grid">
+        <div class="section-head"><h2 id="install-title">Install Nyx</h2><p>You’ll need desktop Chrome and a NyxID account.</p></div>
+        <ol class="steps">
+          <li><div><h3>Download and unzip</h3><p>Extract <a href="../nyx-chrome-extension.zip" download>nyx-chrome-extension.zip</a> and find the folder containing manifest.json.</p></div></li>
+          <li><div><h3>Load the extension in Chrome</h3><p>Open the address below, turn on Developer mode, select Load unpacked, and choose the extracted folder.</p><div class="snippet"><code id="extensions-url">chrome://extensions/</code><button type="button" class="copy" data-copy="extensions-url" data-done="Copied" data-error="Select the text to copy" hidden>Copy</button></div></div></li>
+          <li><div><h3>Connect your NyxID</h3><p>Click Nyx in the Extensions menu, then select 连接 NyxID (Connect NyxID). Match the code on the authorization page, approve the services, and return to the panel to chat.</p></div></li>
+        </ol>
+      </div>
+    </section>
+    <section class="wrap section-grid dev" id="develop" aria-labelledby="dev-title">
+      <div class="section-head"><h2 id="dev-title">Developer resources</h2><p>The extension uses Manifest V3 and the Nyx Assistant SDK for chat and authorization.</p></div>
+      <div class="resources">
+        <h3>Run from source</h3>
+        <p>Clone the repository and load the extension/ directory in Chrome. It runs directly from the checkout.</p>
+        <div class="terminal"><div class="terminal-bar"><span>Terminal</span><button type="button" class="copy" data-copy="clone" data-done="Copied" data-error="Select the text to copy" hidden>Copy</button></div><code id="clone">git clone https://github.com/ChronoAIProject/nyx-assistant-browser-extensions.git</code></div>
+        <div class="doclinks">
+          <a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/tree/dev/extension"><strong>Extension source</strong><small>manifest.json · panel.js</small><b aria-hidden="true">↗</b></a>
+          <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK integration guide</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
+        </div>
+        <details><summary>What can Nyx read from a page?</summary><p>The extension requests access to the side panel and the NyxID API origin. To discuss a page, paste the text you choose into a message.</p></details>
+        <details><summary>How are access and conversations stored?</summary><p>NyxID grants access to llm-nyx and chrono-llm-public. The extension encrypts the child credential in its own storage. Select 断开授权 (Disconnect) to revoke it. Closing the side panel ends the current conversation.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap bottom"><span><img src="../nyx.png" width="20" height="20" alt="">ChronoAIProject / Nyx</span><a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/issues">Report an issue ↗</a></div></footer>
+</body>
+</html>
