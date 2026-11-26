@@ -59,13 +59,38 @@
         <ol class="steps">
           <li><div><h3>下载并解压</h3><p>解压<a href="./nyx-chrome-extension.zip" download>nyx-chrome-extension.zip</a>，找到含 manifest.json 的文件夹。</p></div></li>
           <li><div><h3>在 Chrome 中加载扩展</h3><p>在地址栏打开下方地址，启用「开发者模式」，点击「加载已解压的扩展程序」并选择刚才的文件夹。</p><div class="snippet"><code id="extensions-url">chrome://extensions/</code><button type="button" class="copy" data-copy="extensions-url" data-done="已复制" data-error="请选择并复制文字" hidden>复制</button></div></div></li>
-          <li><div><h3>连接 NyxID，开始对话</h3><p>点击工具栏的 Nyx 图标，选择「连接 NyxID」，在授权页核对验证码并批准服务。回到侧边栏即可提问。</p></div></li>
+          <li><div><h3>连接 NyxID，开始对话</h3><p>点击工具栏的 Nyx 图标，选择「连接 NyxID」，在授权页核对验证码并批准服务。回到侧边栏即可提问。 侧边栏顶部可选择跟随 Chrome、简体中文或 English。</p></div></li>
         </ol>
       </div>
     </section>
     <section class="wrap section-grid dev" id="develop" aria-labelledby="dev-title">
       <div class="section-head"><h2 id="dev-title">开发者资源</h2><p>扩展使用 Manifest V3，聊天与授权由 Nyx Assistant SDK 提供。</p></div>
       <div class="resources">
+        <section id="website-api" aria-labelledby="website-api-title">
+          <h3 id="website-api-title">让 Nyx 调用你的网站 API</h3>
+          <p>把这段脚本放进顶层页面，也可以在访客开启网站的 Nyx 接入选项时执行。此页已运行下方示例，回调会查询当前可下载的扩展版本。</p>
+          <script id="live-example">
+window.nyxPageAPI = {
+  version: 1,
+  tools: [{
+    name: "get_release",
+    description: "查询已发布的扩展版本。details 为 true 时一并返回最低 Chrome 版本。",
+    parameters: { details: "boolean" },
+    async execute({ details }) {
+      const response = await fetch("./release.json");
+      if (!response.ok) throw Error("HTTP " + response.status);
+      const release = await response.json();
+      return details ? release : release.version;
+    }
+  }]
+};
+          </script>
+          <div class="terminal"><div class="terminal-bar"><span>JavaScript</span><button type="button" class="copy" data-copy="api-snippet" data-done="已复制" data-error="请选择并复制文字" hidden>复制</button></div><pre><code id="api-snippet"></code></pre></div>
+          <button type="button" id="run-api" class="btn primary">在本页运行 get_release</button>
+          <output id="api-output" aria-live="polite"></output>
+          <p>要在 Nyx 中试用，请在此页点击工具栏的 Nyx 图标并连接 NyxID。选择「网站 API」，勾选 <code>get_release</code>，点击「启用所选 API」。然后提问「请调用 get_release，告诉我已发布的版本及最低 Chrome 版本」。切换标签页、页面导航、关闭侧边栏或点击「停用网站 API」都会结束授权。</p>
+          <details><summary>回调约定及限制</summary><p>为每个操作取唯一的名称，说明它会读取或修改什么。用 string、number 或 boolean 声明每个必填参数。回调返回 JSON 值或对应的 Promise。它使用网页自身的登录身份，服务端仍需校验权限，涉及重要变更时由网站确认。</p><p>最多登记 16 个操作，每个最多 16 个参数。名称以英文字母开头，只含英文字母、数字或下划线，最多 48 个字符。描述最多 512 字符，字符串参数最多 2,048 字符，序列化结果最多 32,768 字符，整份声明限 16,384 字符。调用超过 15 秒时，请先在网站上核对结果。</p></details>
+        </section>
         <h3>从源码运行</h3>
         <p>克隆仓库，然后在 Chrome 中加载 extension/ 目录。源码可直接运行。</p>
         <div class="terminal"><div class="terminal-bar"><span>Terminal</span><button type="button" class="copy" data-copy="clone" data-done="已复制" data-error="请选择并复制文字" hidden>复制</button></div><code id="clone">git clone https://github.com/ChronoAIProject/nyx-assistant-browser-extensions.git</code></div>

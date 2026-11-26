@@ -103,3 +103,22 @@ dialog button:hover { border-color: var(--accent-text); }
 nyx-assistant::part(primary-action):enabled:hover,
 dialog button[value="share"]:hover { background: var(--primary-hover); }
 dialog :focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+
+/* The language selector shares the component header but keeps its native menu. */
+nyx-assistant::part(language) {
+  max-width: 9em;
+  padding: 3px;
+  color: var(--ink);
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font: inherit;
+  font-size: .8em;
+}
+#api-access { max-height: 85dvh; overflow: auto; }
+#api-access .origin, #api-access label { overflow-wrap: anywhere; }
+#api-access form { display: block; }
+#api-access fieldset { border: 0; padding: 0; margin: 12px 0; }
+#api-access label { display: block; color: var(--ink); padding-block: 3px; }
+#api-access form > div { display: flex; gap: 8px; justify-content: end; }
+dialog button[value="enable"] { background: var(--primary); color: var(--on-primary); }
