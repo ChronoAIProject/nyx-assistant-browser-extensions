@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Nyx 助手",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "在 Chrome 侧边栏与 Nyx 对话。切换网页时可以继续当前对话。",
   "minimum_chrome_version": "116",
   "permissions": ["sidePanel", "activeTab", "scripting"],
