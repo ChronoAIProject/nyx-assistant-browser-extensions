@@ -4,7 +4,8 @@
 
 | 文件 | 输入及依赖 | 使用方和用途 |
 |---|---|---|
-| README.md | 安装目录、Chrome 版本、NyxID 授权 | 用户安装，维护者验证跨页对话 |
+| README.md | Actions 下载入口、安装目录、Chrome 版本、NyxID 授权 | 用户下载安装，维护者验证跨页对话 |
+| .github/workflows/chrome-extension.yml | 下列全部 `extension/` 文件、checkout 和 upload-artifact | 维护者在 PR 验收候选包，用户在 Actions 下载 `dev` 安装包。工作流校验清单后上传目录，失败时作业报错。GitHub 保留 ZIP 30 天后自动过期。运行及存储成本尚未测量。 |
 | extension/manifest.json | background.js、panel.html、四种尺寸的图标、NyxID API 来源 | Chrome 安装、权限与入口注册 |
 | extension/background.js | Chrome runtime、sidePanel API | Chrome 在点击工具栏图标时打开窗口侧边栏 |
 | extension/panel.html | panel.css、vendor/nyx-widget.js、panel.js、NyxID API 和登录来源 | Chrome 承载聊天与授权 |
