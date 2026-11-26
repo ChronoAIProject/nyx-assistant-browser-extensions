@@ -73,7 +73,7 @@
           <a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/tree/dev/extension"><strong>扩展源码</strong><small>manifest.json · panel.js</small><b aria-hidden="true">↗</b></a>
           <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK 接入文档</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
         </div>
-        <details><summary>扩展会读取哪些网页数据？</summary><p>扩展申请侧边栏和 NyxID API 站点权限。若要讨论正在浏览的内容，请把选定文字粘贴到对话中。</p></details>
+        <details><summary>扩展会读取哪些网页数据？</summary><p>在要讨论的网页上点击工具栏的 Nyx 图标，然后选择「附上网页内容」。扩展使用 activeTab 和 scripting 临时读取顶层网页的选区或正文，跳过输入框与可编辑区域。预览、删改并确认后，Nyx 即可读取这份摘录。可随时移除或换一份摘录。</p></details>
         <details><summary>授权和会话如何保存？</summary><p>NyxID 授权使用 llm-nyx 和 chrono-llm-public 服务。子凭据在扩展来源加密保存，可在侧边栏点击「断开授权」撤销。关闭侧边栏会结束本次对话。</p></details>
       </div>
     </section>
