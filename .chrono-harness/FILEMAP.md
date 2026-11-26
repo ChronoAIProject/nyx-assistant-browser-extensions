@@ -5,10 +5,11 @@
 | 文件 | 输入及依赖 | 使用方和用途 |
 |---|---|---|
 | README.md | Actions 下载入口、安装目录、Chrome 版本、NyxID 授权 | 用户下载安装，维护者验证跨页对话 |
-| .github/workflows/chrome-extension.yml | 下列扩展及官网文件、checkout、GitHub artifact 和 Pages 服务 | CI 产出 ZIP 并核验下载摘要，复制扩展图标供官网使用。`dev` 部署两种语言的页面及同一份 ZIP，部署失败则报告错误。Actions 安装包保留 30 天，官网文件由下一次成功部署替换。运行及存储成本未知。 |
+| .github/workflows/chrome-extension.yml | 下列扩展及官网文件、checkout、GitHub artifact 和 Pages 服务 | CI 从固定提交的 extension 树生成一个 ZIP，供 Actions 和 Pages 使用。`dev` 部署两种语言的页面及同一份 ZIP，部署失败则报告错误。Actions 安装包保留 30 天，官网文件由下一次成功部署替换。运行及存储成本未知。 |
 | site/index.html | 中文安装步骤、扩展授权及 SDK 接口、下列样式和资源 | 中文访客下载、安装和开发，切换到英文 |
 | site/en/index.html | 英文安装步骤、扩展授权及 SDK 接口、共享站点资源 | 英文访客下载、安装和开发，切换到中文 |
 | site/site.css | 两种语言的 HTML、earthrise.jpg | 浏览器绘制适应窄屏的站点和示意图 |
+| site/nyxid-coloured-icon.svg | [NyxID 产品站图标原件](https://github.com/ChronoAIProject/NyxID/blob/4f828cc4995796227a9b210f3d327b7835f119af/frontend/public/nyxid-coloured-icon.svg) | 中英文官网导航、侧边栏示意、页脚和标签页图标 |
 | site/site.js | 两种语言的章节链接、复制按钮和目标文字 | 访客复制安装地址和命令，切换语言时保留章节 |
 | site/earthrise.jpg | NASA / JSC，Apollo 8 影像 AS08-14-2383，来源链接见页面图注 | 在官网示意图中展示浏览页与侧边栏的位置 |
 | extension/manifest.json | background.js、panel.html、四种尺寸的图标、NyxID API 来源 | Chrome 安装、权限与入口注册 |
