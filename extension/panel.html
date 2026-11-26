@@ -1,35 +1,52 @@
 <!doctype html>
-<html lang="zh-CN">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Nyx 助手</title>
+  <title>Nyx</title>
   <link rel="stylesheet" href="panel.css">
   <script defer src="vendor/nyx-widget.js"></script>
   <script defer src="read-page.js"></script>
-  <script defer src="panel.js"></script>
+  <script type="module" src="panel.js"></script>
 </head>
 <body>
   <main>
+    <select id="language" aria-label="Language">
+      <option value="auto" data-i18n="automatic"></option>
+      <option value="zh-CN" lang="zh-CN">简体中文</option>
+      <option value="en" lang="en">English</option>
+    </select>
     <nyx-assistant data-nyxid="https://nyx-api.chrono-ai.fun"
-                   data-verification-origin="https://nyxid.ai"
-                   data-storage="local">
+                   data-verification-origin="https://nyxid.ai" data-storage="local">
     </nyx-assistant>
     <template id="page-tools">
       <div part="page-tools" hidden>
-        <button type="button" class="attach">附上网页内容</button>
-        <button type="button" class="remove" hidden>移除摘录</button>
-        <span role="status"></span>
+        <button type="button" class="attach" data-i18n="attach"></button>
+        <button type="button" class="remove" data-i18n="remove" hidden></button>
+        <button type="button" class="apis" data-i18n="siteApis"></button>
+        <button type="button" class="disable-apis" data-i18n="disableApis" hidden></button>
+        <span role="status" class="excerpt-status"></span>
+        <span role="status" class="api-status"></span>
       </div>
     </template>
     <dialog id="preview" aria-labelledby="preview-title">
-      <h2 id="preview-title">预览网页摘录</h2>
-      <label for="excerpt">可以删改。确认后，Nyx 可在本次对话中读取下方文字。</label>
+      <h2 id="preview-title"></h2>
+      <label for="excerpt" data-i18n="editHint"></label>
       <textarea id="excerpt" rows="10" maxlength="12300"></textarea>
       <form method="dialog">
-        <button value="cancel">取消</button>
-        <button value="share">使用此摘录</button>
+        <button value="cancel" data-i18n="cancel"></button>
+        <button value="share" data-i18n="share"></button>
+      </form>
+    </dialog>
+    <dialog id="api-access" aria-labelledby="api-title">
+      <h2 id="api-title" data-i18n="reviewApis"></h2>
+      <strong class="origin"></strong>
+      <p data-i18n="apiHint"></p>
+      <form method="dialog">
+        <fieldset></fieldset>
+        <div><button value="cancel" data-i18n="cancel"></button>
+          <button value="enable" data-i18n="enableApis"></button></div>
       </form>
     </dialog>
   </main>

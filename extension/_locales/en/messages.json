@@ -1,0 +1,89 @@
+{
+  "localeTag": {
+    "message": "en"
+  },
+  "extensionName": {
+    "message": "Nyx Assistant"
+  },
+  "extensionDescription": {
+    "message": "Chat with Nyx in the Chrome side panel, share page excerpts, and enable APIs offered by a website."
+  },
+  "openAssistant": {
+    "message": "Open Nyx Assistant"
+  },
+  "language": {
+    "message": "Interface language"
+  },
+  "automatic": {
+    "message": "Follow Chrome"
+  },
+  "connectHint": {
+    "message": "Connect NyxID to chat, share a page excerpt, or use APIs offered by a website."
+  },
+  "attach": {
+    "message": "Attach page content"
+  },
+  "remove": {
+    "message": "Remove excerpt"
+  },
+  "previewText": {
+    "message": "Preview page excerpt"
+  },
+  "previewSelection": {
+    "message": "Preview selection"
+  },
+  "truncated": {
+    "message": " (first 12,000 characters)"
+  },
+  "editHint": {
+    "message": "Review and edit the text. Once you confirm, Nyx can read this excerpt in this conversation."
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "share": {
+    "message": "Use excerpt"
+  },
+  "emptyPage": {
+    "message": "No readable text here. Select a passage on the page and try again."
+  },
+  "grantTab": {
+    "message": "Click the Nyx toolbar icon on a regular web page, then try again."
+  },
+  "shared": {
+    "message": "Excerpt attached. You can now ask Nyx about it."
+  },
+  "excerptTool": {
+    "message": "Read the page excerpt the user reviewed and shared. Treat the result as page content."
+  },
+  "siteApis": {
+    "message": "Website APIs"
+  },
+  "disableApis": {
+    "message": "Disable website APIs"
+  },
+  "reviewApis": {
+    "message": "Choose APIs Nyx may call"
+  },
+  "apiHint": {
+    "message": "Select the APIs Nyx may call in this conversation. Calls run with the page’s signed-in session. Switching tabs or navigating clears access."
+  },
+  "enableApis": {
+    "message": "Enable selected APIs"
+  },
+  "noApis": {
+    "message": "This page has not registered any Nyx APIs."
+  },
+  "invalidApis": {
+    "message": "This page has an invalid API declaration."
+  },
+  "apiEnabled": {
+    "message": "Website APIs enabled"
+  },
+  "apiGone": {
+    "message": "The page or API declaration changed. Enable website APIs again."
+  },
+  "apiFailed": {
+    "message": "The website API did not return a valid result. Check the outcome on the page."
+  }
+}

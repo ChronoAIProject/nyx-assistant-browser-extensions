@@ -120,3 +120,9 @@ footer { border-top: 1px solid var(--line); }
   .browser-body { grid-template-columns: 50% 50%; }
   .doclinks { grid-template-columns: 1fr; }
 }
+#website-api { margin-bottom: 2rem; }
+#website-api .terminal pre { white-space: pre-wrap; margin: 0; }
+#website-api .btn { font: inherit; cursor: pointer; }
+#website-api p { margin-block: .75em; }
+#api-output { display: block; white-space: pre-wrap; font-family: var(--mono); }
+#api-output:not(:empty) { margin-block: 1em; }

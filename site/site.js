@@ -29,3 +29,17 @@ if (navigator.clipboard) {
     });
   }
 }
+
+document.getElementById("api-snippet").textContent = document.getElementById("live-example").textContent.trim();
+const runApi = document.getElementById("run-api");
+runApi.onclick = async () => {
+  const output = document.getElementById("api-output");
+  runApi.disabled = true;
+  try {
+    output.textContent = JSON.stringify(await window.nyxPageAPI.tools[0].execute({ details: true }), null, 2);
+  } catch (error) {
+    output.textContent = String(error.message);
+  } finally {
+    runApi.disabled = false;
+  }
+};

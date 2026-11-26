@@ -59,13 +59,38 @@
         <ol class="steps">
           <li><div><h3>Download and unzip</h3><p>Extract <a href="../nyx-chrome-extension.zip" download>nyx-chrome-extension.zip</a> and find the folder containing manifest.json.</p></div></li>
           <li><div><h3>Load the extension in Chrome</h3><p>Open the address below, turn on Developer mode, select Load unpacked, and choose the extracted folder.</p><div class="snippet"><code id="extensions-url">chrome://extensions/</code><button type="button" class="copy" data-copy="extensions-url" data-done="Copied" data-error="Select the text to copy" hidden>Copy</button></div></div></li>
-          <li><div><h3>Connect your NyxID</h3><p>Click Nyx in the Extensions menu, then select 连接 NyxID (Connect NyxID). Match the code on the authorization page, approve the services, and return to the panel to chat.</p></div></li>
+          <li><div><h3>Connect your NyxID</h3><p>Click Nyx in the Extensions menu, then select Connect to NyxID. Match the code on the authorization page, approve the services, and return to the panel to chat. Use the language selector in the panel header to follow Chrome or choose English or Simplified Chinese.</p></div></li>
         </ol>
       </div>
     </section>
     <section class="wrap section-grid dev" id="develop" aria-labelledby="dev-title">
       <div class="section-head"><h2 id="dev-title">Developer resources</h2><p>The extension uses Manifest V3 and the Nyx Assistant SDK for chat and authorization.</p></div>
       <div class="resources">
+        <section id="website-api" aria-labelledby="website-api-title">
+          <h3 id="website-api-title">Let Nyx call your website API</h3>
+          <p>Add this script to your top-level page, or run it when a visitor enables your Nyx integration. This page runs the example below. Its callback fetches the version of the extension available for download.</p>
+          <script id="live-example">
+window.nyxPageAPI = {
+  version: 1,
+  tools: [{
+    name: "get_release",
+    description: "Read the published version. Set details to include the minimum Chrome version.",
+    parameters: { details: "boolean" },
+    async execute({ details }) {
+      const response = await fetch("../release.json");
+      if (!response.ok) throw Error("HTTP " + response.status);
+      const release = await response.json();
+      return details ? release : release.version;
+    }
+  }]
+};
+          </script>
+          <div class="terminal"><div class="terminal-bar"><span>JavaScript</span><button type="button" class="copy" data-copy="api-snippet" data-done="Copied" data-error="Select to copy" hidden>Copy</button></div><pre><code id="api-snippet"></code></pre></div>
+          <button type="button" id="run-api" class="btn primary">Run get_release on this page</button>
+          <output id="api-output" aria-live="polite"></output>
+          <p>To try this with Nyx, click its toolbar icon on this page and connect to NyxID. Choose <strong>Website APIs</strong>, select <code>get_release</code>, then choose <strong>Enable selected APIs</strong>. Ask “Use get_release to tell me the published version and minimum Chrome version.” Switching tabs, navigation, closing the panel, or choosing <strong>Disable website APIs</strong> clears access.</p>
+          <details><summary>Callback contract and limits</summary><p>Use a unique operation name and describe what it reads or changes. Map each required argument to string, number, or boolean. Return a JSON value or a promise for one. Your callback runs in the page’s session, so your server still checks authorization and your site handles confirmation for consequential actions.</p><p>Declare up to 16 tools, each with up to 16 arguments. Names start with an ASCII letter and use letters, digits or underscores, up to 48 characters. Descriptions allow 512 characters, string arguments 2,048, and serialized results 32,768. Keep the whole declaration under 16,384 characters. After a 15-second timeout, check the outcome on the site before trying again.</p></details>
+        </section>
         <h3>Run from source</h3>
         <p>Clone the repository and load the extension/ directory in Chrome. It runs directly from the checkout.</p>
         <div class="terminal"><div class="terminal-bar"><span>Terminal</span><button type="button" class="copy" data-copy="clone" data-done="Copied" data-error="Select the text to copy" hidden>Copy</button></div><code id="clone">git clone https://github.com/ChronoAIProject/nyx-assistant-browser-extensions.git</code></div>
@@ -73,8 +98,8 @@
           <a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/tree/dev/extension"><strong>Extension source</strong><small>manifest.json · panel.js</small><b aria-hidden="true">↗</b></a>
           <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK integration guide</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
         </div>
-        <details><summary>What can Nyx read from a page?</summary><p>Click the Nyx toolbar icon on the page, then select 附上网页内容 (Attach page content). Using activeTab and scripting, the extension reads the selection or visible text in the top frame, skipping form fields and editors. Review and edit the excerpt, then select 使用此摘录 (Use excerpt) to share it with Nyx. You can remove or replace it during the conversation.</p></details>
-        <details><summary>How are access and conversations stored?</summary><p>NyxID grants access to llm-nyx and chrono-llm-public. The extension encrypts the child credential in its own storage. Select 断开授权 (Disconnect) to revoke it. Closing the side panel ends the current conversation.</p></details>
+        <details><summary>What can Nyx read from a page?</summary><p>Click the Nyx toolbar icon on the page, then select Attach page content. Using activeTab and scripting, the extension reads the selection or visible text in the top frame, skipping form fields and editors. Review and edit the excerpt, then select Use excerpt to share it with Nyx. You can remove or replace it during the conversation.</p></details>
+        <details><summary>How are access and conversations stored?</summary><p>NyxID grants access to llm-nyx and chrono-llm-public. The extension encrypts the child credential in its own storage. Select Disconnect to revoke it. Closing the side panel ends the current conversation.</p></details>
       </div>
     </section>
   </main>

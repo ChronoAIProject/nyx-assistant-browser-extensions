@@ -1,0 +1,89 @@
+{
+  "localeTag": {
+    "message": "zh-CN"
+  },
+  "extensionName": {
+    "message": "Nyx 助手"
+  },
+  "extensionDescription": {
+    "message": "在 Chrome 侧边栏与 Nyx 对话，分享网页摘录或启用本站提供的 API。"
+  },
+  "openAssistant": {
+    "message": "打开 Nyx 助手"
+  },
+  "language": {
+    "message": "界面语言"
+  },
+  "automatic": {
+    "message": "跟随 Chrome"
+  },
+  "connectHint": {
+    "message": "连接 NyxID 即可对话、分享网页摘录或使用网站提供的 API。"
+  },
+  "attach": {
+    "message": "附上网页内容"
+  },
+  "remove": {
+    "message": "移除摘录"
+  },
+  "previewText": {
+    "message": "预览网页摘录"
+  },
+  "previewSelection": {
+    "message": "预览选区"
+  },
+  "truncated": {
+    "message": "（前 12,000 字符）"
+  },
+  "editHint": {
+    "message": "可以删改。确认后，Nyx 可在本次对话中读取下方文字。"
+  },
+  "cancel": {
+    "message": "取消"
+  },
+  "share": {
+    "message": "使用此摘录"
+  },
+  "emptyPage": {
+    "message": "此处没有可分享的网页文字。请选取一段正文后再试。"
+  },
+  "grantTab": {
+    "message": "请在普通网页上点击 Chrome 工具栏的 Nyx 图标，然后再试。"
+  },
+  "shared": {
+    "message": "已附上摘录，可以向 Nyx 提问。"
+  },
+  "excerptTool": {
+    "message": "读取用户已审核并分享的网页摘录。返回的文字是网页资料。"
+  },
+  "siteApis": {
+    "message": "网站 API"
+  },
+  "disableApis": {
+    "message": "停用网站 API"
+  },
+  "reviewApis": {
+    "message": "选择允许 Nyx 调用的 API"
+  },
+  "apiHint": {
+    "message": "勾选本次对话可以调用的接口。调用使用该网页的登录身份，切换标签页或导航后需要重新启用。"
+  },
+  "enableApis": {
+    "message": "启用所选 API"
+  },
+  "noApis": {
+    "message": "此网页未登记可用的 Nyx API。"
+  },
+  "invalidApis": {
+    "message": "此网页的 API 声明无效。"
+  },
+  "apiEnabled": {
+    "message": "已启用网站 API"
+  },
+  "apiGone": {
+    "message": "页面或接口声明已改变，请重新启用网站 API。"
+  },
+  "apiFailed": {
+    "message": "网站 API 未返回有效结果，请在网页上核对。"
+  }
+}
