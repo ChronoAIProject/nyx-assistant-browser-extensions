@@ -17,9 +17,9 @@
 | extension/panel.html | panel.css、vendor/nyx-widget.js、read-page.js、panel.js、NyxID API 和登录来源 | Chrome 承载聊天与授权 |
 | extension/panel.js | SDK 宿主、预览弹窗、Chrome activeTab 与 scripting、collectPageExcerpt | 侧边栏用户预览并确认快照，当前对话通过 read_shared_page 读取确认的文字 |
 | extension/read-page.js | 当前获准 HTTP(S) 主文档中的选区、渲染文字 | 用户按需预览限长文字，跳过编辑器及表单字段 |
-| extension/panel.css | SDK 公开的组件部件、nyx-32.png、系统配色 | 用户在不同侧边栏尺寸下阅读和输入 |
+| extension/panel.css | SDK 公开的组件部件、nyx-128.png、NyxID 深色品牌配色 | 用户在不同侧边栏尺寸下阅读和输入 |
 | extension/vendor/nyx-widget.js | README 链接的 SDK 固定构建，内含授权、对话、Markdown 和依赖许可 | panel.html 在扩展来源运行 NyxID 授权与聊天 |
-| extension/icons/nyx-16.png | Nyx 图标 16 像素 | Chrome 工具栏 |
-| extension/icons/nyx-32.png | Nyx 图标 32 像素 | 高分辨率工具栏、侧边栏标题 |
-| extension/icons/nyx-48.png | Nyx 图标 48 像素 | Chrome 扩展管理页 |
-| extension/icons/nyx-128.png | Nyx 图标 128 像素 | Chrome 安装界面 |
+| extension/icons/nyx-16.png | site/nyxid-coloured-icon.svg 的 16 像素 PNG | Chrome 工具栏 |
+| extension/icons/nyx-32.png | site/nyxid-coloured-icon.svg 的 32 像素 PNG | 高分辨率工具栏 |
+| extension/icons/nyx-48.png | site/nyxid-coloured-icon.svg 的 48 像素 PNG | Chrome 扩展管理页 |
+| extension/icons/nyx-128.png | site/nyxid-coloured-icon.svg 的 128 像素 PNG | Chrome 安装界面、侧边栏标题 |
