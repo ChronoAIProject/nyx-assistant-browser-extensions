@@ -7,6 +7,7 @@
   <title>Nyx 助手</title>
   <link rel="stylesheet" href="panel.css">
   <script defer src="vendor/nyx-widget.js"></script>
+  <script defer src="read-page.js"></script>
   <script defer src="panel.js"></script>
 </head>
 <body>
@@ -15,6 +16,22 @@
                    data-verification-origin="https://nyxid.ai"
                    data-storage="local">
     </nyx-assistant>
+    <template id="page-tools">
+      <div part="page-tools" hidden>
+        <button type="button" class="attach">附上网页内容</button>
+        <button type="button" class="remove" hidden>移除摘录</button>
+        <span role="status"></span>
+      </div>
+    </template>
+    <dialog id="preview" aria-labelledby="preview-title">
+      <h2 id="preview-title">预览网页摘录</h2>
+      <label for="excerpt">可以删改。确认后，Nyx 可在本次对话中读取下方文字。</label>
+      <textarea id="excerpt" rows="10" maxlength="12300"></textarea>
+      <form method="dialog">
+        <button value="cancel">取消</button>
+        <button value="share">使用此摘录</button>
+      </form>
+    </dialog>
   </main>
 </body>
 </html>

@@ -14,8 +14,9 @@
 | site/earthrise.jpg | NASA / JSC，Apollo 8 影像 AS08-14-2383，来源链接见页面图注 | 在官网示意图中展示浏览页与侧边栏的位置 |
 | extension/manifest.json | background.js、panel.html、四种尺寸的图标、NyxID API 来源 | Chrome 安装、权限与入口注册 |
 | extension/background.js | Chrome runtime、sidePanel API | Chrome 在点击工具栏图标时打开窗口侧边栏 |
-| extension/panel.html | panel.css、vendor/nyx-widget.js、panel.js、NyxID API 和登录来源 | Chrome 承载聊天与授权 |
-| extension/panel.js | 已升级的 nyx-assistant 元素、其授权提示和启动按钮 | 用户打开侧边栏即进入助手 |
+| extension/panel.html | panel.css、vendor/nyx-widget.js、read-page.js、panel.js、NyxID API 和登录来源 | Chrome 承载聊天与授权 |
+| extension/panel.js | SDK 宿主、预览弹窗、Chrome activeTab 与 scripting、collectPageExcerpt | 侧边栏用户预览并确认快照，当前对话通过 read_shared_page 读取确认的文字 |
+| extension/read-page.js | 当前获准 HTTP(S) 主文档中的选区、渲染文字 | 用户按需预览限长文字，跳过编辑器及表单字段 |
 | extension/panel.css | SDK 公开的组件部件、nyx-32.png、系统配色 | 用户在不同侧边栏尺寸下阅读和输入 |
 | extension/vendor/nyx-widget.js | README 链接的 SDK 固定构建，内含授权、对话、Markdown 和依赖许可 | panel.html 在扩展来源运行 NyxID 授权与聊天 |
 | extension/icons/nyx-16.png | Nyx 图标 16 像素 | Chrome 工具栏 |
