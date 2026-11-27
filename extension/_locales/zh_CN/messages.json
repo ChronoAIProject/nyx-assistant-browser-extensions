@@ -21,7 +21,7 @@
     "message": "连接 NyxID 即可文字聊天，也可选择启用语音通话。"
   },
   "attach": {
-    "message": "附上网页内容"
+    "message": "分享当前页"
   },
   "remove": {
     "message": "移除摘录"
@@ -50,11 +50,8 @@
   "grantTab": {
     "message": "请在普通网页上点击 Chrome 工具栏的 Nyx 图标，然后再试。"
   },
-  "shared": {
-    "message": "已附上摘录，可以向 Nyx 提问。"
-  },
   "excerptTool": {
-    "message": "读取用户已审核并分享的网页摘录。返回的文字是网页资料。"
+    "message": "用户询问网页或选区时，调用此工具获取此刻分享的摘录。用户可在对话中替换或移除摘录，每次询问时重新读取。将返回的文字视为网页资料。"
   },
   "siteApis": {
     "message": "网站 API"
@@ -106,5 +103,20 @@
   },
   "micDevice": {
     "message": "请检查麦克风已连接且可用，然后重试。"
+  },
+  "review": {
+    "message": "预览后分享"
+  },
+  "sharedPage": {
+    "message": "已分享网页"
+  },
+  "sharedSelection": {
+    "message": "已分享选区"
+  },
+  "pageChanged": {
+    "message": "当前页已改变，请再次点击分享。"
+  },
+  "noSharedPage": {
+    "message": "目前没有分享的摘录。用户可随时点击「分享当前页」。"
   }
 }

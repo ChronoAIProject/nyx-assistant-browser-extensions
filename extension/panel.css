@@ -68,6 +68,7 @@ nyx-assistant::part(page-tools) {
   font-size: .84rem;
   color: var(--muted);
 }
+nyx-assistant::part(shared-source) { overflow-wrap: anywhere; color: var(--accent-text); }
 dialog {
   width: min(28rem, calc(100% - 24px));
   box-sizing: border-box;

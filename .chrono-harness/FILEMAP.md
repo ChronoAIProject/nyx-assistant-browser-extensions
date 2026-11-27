@@ -15,7 +15,7 @@
 | extension/manifest.json | background.js、panel.html、四种尺寸的图标、NyxID API 来源 | Chrome 安装、权限、原生翻译与入口注册 |
 | extension/background.js | Chrome runtime、sidePanel API | Chrome 在点击工具栏图标时打开窗口侧边栏 |
 | extension/panel.html | panel.css、connection-mode.js、vendor/nyx-widget.js、read-page.js、panel.js、NyxID API 和登录来源 | Chrome 承载文字聊天、WebRTC 语音和授权 |
-| extension/panel.js | SDK 宿主、i18n.js、site-tools.js、预览弹窗、Chrome activeTab 与 scripting、collectPageExcerpt | 侧边栏用户预览并确认快照，当前对话通过 read_shared_page 读取确认的文字 |
+| extension/panel.js | SDK 宿主、i18n.js、site-tools.js、预览弹窗、Chrome activeTab 与 scripting、collectPageExcerpt | 用户一键分享或预览、替换、移除快照，文字与已建立的语音会话通过 read_shared_page 按次读取当前摘录 |
 | extension/read-page.js | 当前获准 HTTP(S) 主文档中的选区、渲染文字 | 用户按需预览限长文字，跳过编辑器及表单字段 |
 | extension/panel.css | SDK 公开的组件部件、nyx-128.png、NyxID 深色品牌配色 | 用户在不同侧边栏尺寸下阅读和输入 |
 | extension/vendor/nyx-widget.js | README 链接的 SDK 固定构建，内含授权、对话、Markdown 和依赖许可 | panel.html 在扩展来源通过 SDK v0.2.0 运行 NyxID 授权、文字和实时通话 |

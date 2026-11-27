@@ -99,7 +99,7 @@ window.nyxPageAPI = {
           <a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/tree/dev/extension"><strong>扩展源码</strong><small>manifest.json · panel.js</small><b aria-hidden="true">↗</b></a>
           <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK 接入文档</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
         </div>
-        <details><summary>扩展会读取哪些网页数据？</summary><p>在要讨论的网页上点击工具栏的 Nyx 图标，然后选择「附上网页内容」。扩展使用 activeTab 和 scripting 临时读取顶层网页的选区或正文，跳过输入框与可编辑区域。预览、删改并确认后，Nyx 即可读取这份摘录。可随时移除或换一份摘录。</p></details>
+        <details><summary>扩展会读取哪些网页数据？</summary><p>在目标网页上点击工具栏的 Nyx 图标，再点「分享当前页」，即可在文字聊天或正在进行的通话中提问。已选中文字时分享选区，否则分享顶层网页可读正文（最多 12,000 字符）。输入框和编辑区域会跳过。想先删改可点「预览后分享」。侧边栏显示分享来源，再次分享可替换，点「移除摘录」可停止后续读取。</p></details>
         <details><summary>授权和会话如何保存？</summary><p>文字聊天使用 llm-nyx 和 chrono-llm-public，语音还需要 llm-openai。子凭据在扩展来源加密保存，可在侧边栏点击「断开授权」撤销。关闭侧边栏会结束本次对话。</p></details>
       </div>
     </section>

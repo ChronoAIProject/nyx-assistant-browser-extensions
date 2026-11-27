@@ -99,7 +99,7 @@ window.nyxPageAPI = {
           <a href="https://github.com/ChronoAIProject/nyx-assistant-browser-extensions/tree/dev/extension"><strong>Extension source</strong><small>manifest.json · panel.js</small><b aria-hidden="true">↗</b></a>
           <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK integration guide</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
         </div>
-        <details><summary>What can Nyx read from a page?</summary><p>Click the Nyx toolbar icon on the page, then select Attach page content. Using activeTab and scripting, the extension reads the selection or visible text in the top frame, skipping form fields and editors. Review and edit the excerpt, then select Use excerpt to share it with Nyx. You can remove or replace it during the conversation.</p></details>
+        <details><summary>What can Nyx read from a page?</summary><p>Click the Nyx toolbar icon on the page, then choose Share current page in text chat or during a voice call. Nyx uses your selection when present, or up to 12,000 characters of readable top-level text, skipping inputs and editors. Choose Preview before sharing to edit first. The panel shows the shared source. Share again to replace it, or choose Remove excerpt to stop future reads.</p></details>
         <details><summary>How are access and conversations stored?</summary><p>Text chat uses llm-nyx and chrono-llm-public. Voice also uses llm-openai. The extension encrypts the child credential in its own storage. Select Disconnect to revoke it. Closing the side panel ends the current conversation.</p></details>
       </div>
     </section>
