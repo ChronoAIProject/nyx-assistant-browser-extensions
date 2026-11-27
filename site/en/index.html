@@ -60,6 +60,7 @@
           <li><div><h3>Download and unzip</h3><p>Extract <a href="../nyx-chrome-extension.zip" download>nyx-chrome-extension.zip</a> and find the folder containing manifest.json.</p></div></li>
           <li><div><h3>Load the extension in Chrome</h3><p>Open the address below, turn on Developer mode, select Load unpacked, and choose the extracted folder.</p><div class="snippet"><code id="extensions-url">chrome://extensions/</code><button type="button" class="copy" data-copy="extensions-url" data-done="Copied" data-error="Select the text to copy" hidden>Copy</button></div></div></li>
           <li><div><h3>Connect your NyxID</h3><p>Click Nyx in the Extensions menu, then select Connect to NyxID. Match the code on the authorization page, approve the services, and return to the panel to chat. Use the language selector in the panel header to follow Chrome or choose English or Simplified Chinese.</p></div></li>
+          <li><div><h3>Make a voice call</h3><p>Keep “Include voice calls” selected before connecting and authorize your OpenAI API connection (llm-openai) in NyxID. With an empty message box, choose “Voice call” and allow microphone access in Chrome. If Chrome denies the request, open “Microphone access”, allow it in the new tab, and return to the panel to call again. You can read captions, mute, or hang up to return to chat. Upgrading from 0.3.0 requires a new voice grant. Clear the checkbox before connecting to use your previous text grant.</p></div></li>
         </ol>
       </div>
     </section>
@@ -99,7 +100,7 @@ window.nyxPageAPI = {
           <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK integration guide</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
         </div>
         <details><summary>What can Nyx read from a page?</summary><p>Click the Nyx toolbar icon on the page, then select Attach page content. Using activeTab and scripting, the extension reads the selection or visible text in the top frame, skipping form fields and editors. Review and edit the excerpt, then select Use excerpt to share it with Nyx. You can remove or replace it during the conversation.</p></details>
-        <details><summary>How are access and conversations stored?</summary><p>NyxID grants access to llm-nyx and chrono-llm-public. The extension encrypts the child credential in its own storage. Select Disconnect to revoke it. Closing the side panel ends the current conversation.</p></details>
+        <details><summary>How are access and conversations stored?</summary><p>Text chat uses llm-nyx and chrono-llm-public. Voice also uses llm-openai. The extension encrypts the child credential in its own storage. Select Disconnect to revoke it. Closing the side panel ends the current conversation.</p></details>
       </div>
     </section>
   </main>

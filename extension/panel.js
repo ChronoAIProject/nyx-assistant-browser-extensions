@@ -8,7 +8,22 @@ view.querySelector(".controls").part.add("controls");
 const language = document.querySelector("#language");
 language.part.add("language");
 view.querySelector(".disconnect").before(language);
-view.querySelector('[part="launcher"]').click();
+view.querySelector("header h2").part.add("title");
+const voicePreference = document.querySelector("#voice-preference");
+voicePreference.setAttribute("part", "voice-preference");
+const connect = view.querySelector(".connect");
+connect.before(voicePreference);
+const syncPreference = () => { voicePreference.hidden = connect.hidden; };
+new MutationObserver(syncPreference).observe(connect, { attributes: true, attributeFilter: ["hidden"] });
+syncPreference();
+
+const micHelp = document.querySelector("#mic-help");
+micHelp.setAttribute("part", "mic-help");
+const callSettings = view.querySelector(".voice-settings");
+callSettings.after(micHelp);
+const syncMicHelp = () => { micHelp.hidden = callSettings.hidden; };
+new MutationObserver(syncMicHelp).observe(callSettings, { attributes: true, attributeFilter: ["hidden"] });
+syncMicHelp();
 
 const toolbar = document.querySelector("#page-tools").content.firstElementChild.cloneNode(true);
 const attach = toolbar.querySelector(".attach");
@@ -26,6 +41,8 @@ let boundHost;
 
 function render() {
   translate(toolbar);
+  translate(voicePreference);
+  micHelp.textContent = t("micTitle");
   view.querySelector(".connect-hint").textContent = t("connectHint");
   feedback.textContent = status ? t(status) : "";
   if (preview) {

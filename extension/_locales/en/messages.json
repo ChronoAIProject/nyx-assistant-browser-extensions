@@ -6,7 +6,7 @@
     "message": "Nyx Assistant"
   },
   "extensionDescription": {
-    "message": "Chat with Nyx in the Chrome side panel, share page excerpts, and enable APIs offered by a website."
+    "message": "Chat or make voice calls with Nyx in the Chrome side panel, share excerpts, and enable website APIs."
   },
   "openAssistant": {
     "message": "Open Nyx Assistant"
@@ -18,7 +18,7 @@
     "message": "Follow Chrome"
   },
   "connectHint": {
-    "message": "Connect NyxID to chat, share a page excerpt, or use APIs offered by a website."
+    "message": "Connect to NyxID for chat and optional voice calls."
   },
   "attach": {
     "message": "Attach page content"
@@ -85,5 +85,26 @@
   },
   "apiFailed": {
     "message": "The website API did not return a valid result. Check the outcome on the page."
+  },
+  "includeVoice": {
+    "message": "Include voice calls"
+  },
+  "micTitle": {
+    "message": "Microphone access"
+  },
+  "micHint": {
+    "message": "Allow Nyx to use your microphone for calls. Chrome may ask for permission. This check releases the microphone immediately."
+  },
+  "micAllow": {
+    "message": "Allow microphone"
+  },
+  "micReady": {
+    "message": "Microphone ready. Return to the Nyx side panel and start your call."
+  },
+  "micDenied": {
+    "message": "Allow microphone access in Chrome’s site settings and in your system settings, then try again."
+  },
+  "micDevice": {
+    "message": "Check that a microphone is connected and available, then try again."
   }
 }
