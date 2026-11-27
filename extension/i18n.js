@@ -15,21 +15,25 @@ export function translate(root) {
 }
 function apply() {
   const saved = localStorage.getItem(key);
-  picker.value = Object.hasOwn(locales, saved) ? saved : "auto";
-  current = picker.value === "auto" ? chrome.i18n.getMessage("localeTag") : picker.value;
+  const preference = Object.hasOwn(locales, saved) ? saved : "auto";
+  current = preference === "auto" ? chrome.i18n.getMessage("localeTag") : preference;
   if (!Object.hasOwn(locales, current)) current = "en";
   document.documentElement.lang = current;
   document.title = t("extensionName");
-  picker.setAttribute("aria-label", t("language"));
-  document.querySelector("nyx-assistant").lang = current;
+  if (picker) {
+    picker.value = preference;
+    picker.setAttribute("aria-label", t("language"));
+    translate(picker);
+  }
+  const widget = document.querySelector("nyx-assistant");
+  if (widget) widget.lang = current;
   translate(document);
-  translate(picker);
   window.dispatchEvent(new Event("nyx-panel-language"));
 }
-picker.onchange = () => {
+picker?.addEventListener("change", () => {
   if (picker.value === "auto") localStorage.removeItem(key);
   else localStorage.setItem(key, picker.value);
   apply();
-};
+});
 window.addEventListener("storage", event => { if (event.key === key || event.key === null) apply(); });
 apply();

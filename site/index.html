@@ -60,6 +60,7 @@
           <li><div><h3>下载并解压</h3><p>解压<a href="./nyx-chrome-extension.zip" download>nyx-chrome-extension.zip</a>，找到含 manifest.json 的文件夹。</p></div></li>
           <li><div><h3>在 Chrome 中加载扩展</h3><p>在地址栏打开下方地址，启用「开发者模式」，点击「加载已解压的扩展程序」并选择刚才的文件夹。</p><div class="snippet"><code id="extensions-url">chrome://extensions/</code><button type="button" class="copy" data-copy="extensions-url" data-done="已复制" data-error="请选择并复制文字" hidden>复制</button></div></div></li>
           <li><div><h3>连接 NyxID，开始对话</h3><p>点击工具栏的 Nyx 图标，选择「连接 NyxID」，在授权页核对验证码并批准服务。回到侧边栏即可提问。 侧边栏顶部可选择跟随 Chrome、简体中文或 English。</p></div></li>
+          <li><div><h3>与 Nyx 语音通话</h3><p>连接前勾选「启用语音通话」，在 NyxID 授权自己的 OpenAI API 连接（llm-openai）。输入框为空时点击「语音通话」，允许 Chrome 使用麦克风。若提示权限不足，打开「麦克风权限」，在新标签页允许后返回重拨。通话中可看字幕、静音或挂断。由 0.3.0 升级的用户首次使用语音需重新授权，连接前取消勾选即可使用原有文字授权。</p></div></li>
         </ol>
       </div>
     </section>
@@ -99,7 +100,7 @@ window.nyxPageAPI = {
           <a href="https://github.com/ChronoAIProject/nyx-assistant-sdk#readme"><strong>SDK 接入文档</strong><small>NyxID · AssistantHost</small><b aria-hidden="true">↗</b></a>
         </div>
         <details><summary>扩展会读取哪些网页数据？</summary><p>在要讨论的网页上点击工具栏的 Nyx 图标，然后选择「附上网页内容」。扩展使用 activeTab 和 scripting 临时读取顶层网页的选区或正文，跳过输入框与可编辑区域。预览、删改并确认后，Nyx 即可读取这份摘录。可随时移除或换一份摘录。</p></details>
-        <details><summary>授权和会话如何保存？</summary><p>NyxID 授权使用 llm-nyx 和 chrono-llm-public 服务。子凭据在扩展来源加密保存，可在侧边栏点击「断开授权」撤销。关闭侧边栏会结束本次对话。</p></details>
+        <details><summary>授权和会话如何保存？</summary><p>文字聊天使用 llm-nyx 和 chrono-llm-public，语音还需要 llm-openai。子凭据在扩展来源加密保存，可在侧边栏点击「断开授权」撤销。关闭侧边栏会结束本次对话。</p></details>
       </div>
     </section>
   </main>

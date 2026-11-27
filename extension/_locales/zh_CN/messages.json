@@ -6,7 +6,7 @@
     "message": "Nyx 助手"
   },
   "extensionDescription": {
-    "message": "在 Chrome 侧边栏与 Nyx 对话，分享网页摘录或启用本站提供的 API。"
+    "message": "在 Chrome 侧边栏与 Nyx 文字聊天或语音通话，分享网页摘录或启用本站提供的 API。"
   },
   "openAssistant": {
     "message": "打开 Nyx 助手"
@@ -18,7 +18,7 @@
     "message": "跟随 Chrome"
   },
   "connectHint": {
-    "message": "连接 NyxID 即可对话、分享网页摘录或使用网站提供的 API。"
+    "message": "连接 NyxID 即可文字聊天，也可选择启用语音通话。"
   },
   "attach": {
     "message": "附上网页内容"
@@ -85,5 +85,26 @@
   },
   "apiFailed": {
     "message": "网站 API 未返回有效结果，请在网页上核对。"
+  },
+  "includeVoice": {
+    "message": "启用语音通话"
+  },
+  "micTitle": {
+    "message": "麦克风权限"
+  },
+  "micHint": {
+    "message": "允许 Nyx 在通话时使用麦克风。Chrome 可能会弹出权限提示，检查完成后会立即释放麦克风。"
+  },
+  "micAllow": {
+    "message": "允许使用麦克风"
+  },
+  "micReady": {
+    "message": "麦克风已就绪。请回到 Nyx 侧边栏，重新开始通话。"
+  },
+  "micDenied": {
+    "message": "请在 Chrome 的网站设置和系统设置中允许使用麦克风，然后重试。"
+  },
+  "micDevice": {
+    "message": "请检查麦克风已连接且可用，然后重试。"
   }
 }

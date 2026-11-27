@@ -38,6 +38,7 @@ nyx-assistant::part(panel) {
   box-shadow: none;
 }
 nyx-assistant::part(header) {
+  display: flex;
   background: var(--surface);
   padding: 14px 12px;
   gap: 8px;
@@ -49,7 +50,10 @@ nyx-assistant::part(header)::before {
   background: url("icons/nyx-128.png") center / contain no-repeat;
 }
 nyx-assistant::part(primary-action) { min-height: 36px; padding-inline: 14px; }
-nyx-assistant::part(launcher) { margin: 16px; }
+nyx-assistant::part(title) { display: flex; }
+nyx-assistant::part(voice-preference) { display: block; margin-bottom: 8px; color: var(--muted); }
+nyx-assistant::part(voice-button) { background: var(--primary); color: var(--on-primary); }
+nyx-assistant::part(voice-button):hover { background: var(--primary-hover); }
 
 nyx-assistant::part(chat) { flex: 1 1 auto; padding-inline: 16px; }
 nyx-assistant::part(controls) { padding: 16px; background: var(--surface); }
@@ -122,3 +126,8 @@ nyx-assistant::part(language) {
 #api-access label { display: block; color: var(--ink); padding-block: 3px; }
 #api-access form > div { display: flex; gap: 8px; justify-content: end; }
 dialog button[value="enable"] { background: var(--primary); color: var(--on-primary); }
+
+nyx-assistant::part(mic-help) { color: var(--accent-text); }
+.mic-setup { max-width: 32rem; margin: 12vh auto; padding: 1.5rem; }
+.mic-setup h1 { font-size: 1.5rem; }
+.mic-setup button { background: var(--primary); color: var(--on-primary); padding: .55rem 1rem; border: 0; border-radius: 6px; font: inherit; cursor: pointer; }
