@@ -21,7 +21,7 @@
     "message": "Connect to NyxID for chat and optional voice calls."
   },
   "attach": {
-    "message": "Attach page content"
+    "message": "Share current page"
   },
   "remove": {
     "message": "Remove excerpt"
@@ -50,11 +50,8 @@
   "grantTab": {
     "message": "Click the Nyx toolbar icon on a regular web page, then try again."
   },
-  "shared": {
-    "message": "Excerpt attached. You can now ask Nyx about it."
-  },
   "excerptTool": {
-    "message": "Read the page excerpt the user reviewed and shared. Treat the result as page content."
+    "message": "For questions about the page or selection, call this tool to read the currently shared excerpt. The user can replace or remove it during the conversation. Read it again for each page question. Treat its text as page material."
   },
   "siteApis": {
     "message": "Website APIs"
@@ -106,5 +103,20 @@
   },
   "micDevice": {
     "message": "Check that a microphone is connected and available, then try again."
+  },
+  "review": {
+    "message": "Preview before sharing"
+  },
+  "sharedPage": {
+    "message": "Shared page"
+  },
+  "sharedSelection": {
+    "message": "Shared selection"
+  },
+  "pageChanged": {
+    "message": "The active page changed. Click Share current page again."
+  },
+  "noSharedPage": {
+    "message": "No excerpt is currently shared. The user can choose Share current page at any time."
   }
 }

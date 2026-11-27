@@ -27,17 +27,22 @@ syncMicHelp();
 
 const toolbar = document.querySelector("#page-tools").content.firstElementChild.cloneNode(true);
 const attach = toolbar.querySelector(".attach");
+const review = toolbar.querySelector(".review");
 const remove = toolbar.querySelector(".remove");
+const source = toolbar.querySelector(".shared-source");
 const feedback = toolbar.querySelector(".excerpt-status");
 const composer = view.querySelector("form");
 composer.before(toolbar);
 const revokeSiteTools = setupSiteTools(widget, toolbar);
 const dialog = document.querySelector("#preview");
 const excerpt = document.querySelector("#excerpt");
+const panelWindow = chrome.windows.getCurrent().then(win => win.id);
+let shared;
 let preview;
-let removeTool;
 let status;
 let boundHost;
+let unregister;
+let generation = 0;
 
 function render() {
   translate(toolbar);
@@ -45,27 +50,39 @@ function render() {
   micHelp.textContent = t("micTitle");
   view.querySelector(".connect-hint").textContent = t("connectHint");
   feedback.textContent = status ? t(status) : "";
+  remove.hidden = !shared;
+  source.hidden = !shared;
+  source.textContent = shared ? [t(shared.selection ? "sharedSelection" : "sharedPage"), shared.title,
+    shared.truncated ? t("truncated").trim() : ""].filter(Boolean).join(" · ") : "";
   if (preview) {
-    dialog.querySelector("h2").textContent = t(preview.title) + (preview.truncated ? t("truncated") : "");
+    dialog.querySelector("h2").textContent = t(preview.selection ? "previewSelection" : "previewText") +
+      (preview.truncated ? t("truncated") : "");
   }
 }
 window.addEventListener("nyx-panel-language", render);
 
 function clearExcerpt() {
-  removeTool?.();
-  removeTool = undefined;
-  remove.hidden = true;
+  ++generation;
+  shared = undefined;
   status = undefined;
-  excerpt.value = "";
   preview = undefined;
+  excerpt.value = "";
   if (dialog.open) dialog.close("cancel");
   render();
 }
 function syncHost() {
   if (boundHost !== widget.host) {
+    unregister?.();
     clearExcerpt();
     revokeSiteTools();
     boundHost = widget.host;
+    // A realtime session captures tool bindings at dial time. Keep this binding
+    // for the host's lifetime and resolve the user's current snapshot on each call.
+    unregister = boundHost?.registerTool({
+      name: "read_shared_page", description: t("excerptTool"), parameters: widget.z.object({}),
+      execute: () => shared ? { ok: true, value: { excerpt: shared.text } }
+        : { ok: false, code: "no_shared_page", message: t("noSharedPage") },
+    });
   }
   toolbar.hidden = !widget.host;
 }
@@ -73,47 +90,58 @@ widget.addEventListener("nyx-state", syncHost);
 syncHost();
 render();
 
-remove.onclick = clearExcerpt;
-attach.onclick = async () => {
-  const host = widget.host;
-  if (!host) return;
-  attach.disabled = true;
+function share(page, text) {
+  shared = { title: page.title, selection: page.selection, truncated: page.truncated, text };
+  status = undefined;
+  render();
+}
+async function readPage(withPreview) {
+  if (!widget.host) return;
+  const request = ++generation;
+  attach.disabled = review.disabled = true;
   try {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (!tab?.id) throw Error();
+    const query = { active: true, windowId: await panelWindow };
+    const [tab] = await chrome.tabs.query(query);
+    if (!tab?.id || !/^https?:\/\//.test(tab.url)) throw Error();
     const [frame] = await chrome.scripting.executeScript({
       target: { tabId: tab.id, frameIds: [0] }, world: "ISOLATED", func: collectPageExcerpt,
     });
-    if (widget.host !== host) return;
+    const [current] = await chrome.tabs.query(query);
+    if (request !== generation) return;
+    if (current?.id !== tab.id || current.url !== tab.url) {
+      status = "pageChanged";
+      return;
+    }
     const page = frame?.result;
     if (!page) {
       status = "emptyPage";
       return;
     }
-    preview = { host, title: page.selection ? "previewSelection" : "previewText", truncated: page.truncated };
-    excerpt.value = [page.title, page.text].filter(Boolean).join("\n\n");
-    dialog.returnValue = "cancel";
-    dialog.showModal();
+    const text = [page.title, page.text].filter(Boolean).join("\n\n");
+    if (withPreview) {
+      preview = page;
+      excerpt.value = text;
+      dialog.returnValue = "cancel";
+      dialog.showModal();
+    } else {
+      share(page, text);
+    }
   } catch {
-    if (widget.host === host) status = "grantTab";
+    if (request === generation) status = "grantTab";
   } finally {
+    attach.disabled = review.disabled = false;
     render();
-    attach.disabled = false;
   }
-};
-dialog.addEventListener("close", () => {
+}
+attach.onclick = () => readPage(false);
+review.onclick = () => readPage(true);
+remove.onclick = clearExcerpt;
+dialog.querySelector("form").addEventListener("submit", event => {
   const text = excerpt.value.trim();
-  const host = preview?.host;
+  if (event.submitter?.value === "share" && preview && text) share(preview, text);
+});
+dialog.addEventListener("close", () => {
+  if (dialog.open) return;
   preview = undefined;
   excerpt.value = "";
-  if (dialog.returnValue !== "share" || !text || !host || widget.host !== host) return;
-  removeTool?.();
-  removeTool = host.registerTool({
-    name: "read_shared_page", description: t("excerptTool"), parameters: widget.z.object({}),
-    execute: () => ({ ok: true, value: { excerpt: text } }),
-  });
-  remove.hidden = false;
-  status = "shared";
-  render();
-  view.querySelector("textarea").focus();
 });
